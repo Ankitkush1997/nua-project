@@ -1,0 +1,215 @@
+@use '../../styles/variables' as *;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.brand {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: $space-1;
+
+  @media (max-width: $bp-mobile) {
+    font-size: $font-size-xl;
+  }
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $space-3;
+  margin-top: $space-2;
+}
+
+.price {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+}
+
+.salePrice {
+  color: $color-sale;
+}
+
+.originalPrice {
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.saleBadge {
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-surface;
+  background: $color-sale;
+  padding: $space-1 $space-2;
+  border-radius: $radius-sm;
+}
+
+.sectionLabel {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: $space-3;
+}
+
+.swatches {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color $transition-fast;
+  cursor: pointer;
+  position: relative;
+
+  &.active {
+    outline-color: $color-primary;
+  }
+}
+
+.colourName {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  margin-top: $space-2;
+}
+
+.sizes {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.sizeBtn {
+  min-width: 52px;
+  padding: $space-2 $space-3;
+  border-radius: $radius-md;
+  border: 1.5px solid $color-border;
+  background: $color-surface;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+  position: relative;
+
+  &:hover:not(:disabled):not(.active) {
+    border-color: $color-text-muted;
+  }
+
+  &.active {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-surface;
+  }
+
+  &.lowStock {
+    border-color: #d97706;
+    color: $color-low-stock;
+  }
+
+  &.soldOut {
+    color: $color-sold-out;
+    background: #f9fafb;
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+}
+
+.lowStockLabel {
+  font-size: $font-size-xs;
+  color: $color-low-stock;
+  font-weight: 500;
+  margin-top: $space-2;
+}
+
+.qtyRow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.qtyControl {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.qtyBtn {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  font-size: $font-size-xl;
+  color: $color-text;
+  transition: background $transition-fast;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) { background: $color-bg; }
+  &:disabled { color: $color-sold-out; cursor: not-allowed; }
+}
+
+.qtyValue {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-size: $font-size-base;
+}
+
+.addBtn {
+  width: 100%;
+  padding: $space-4 $space-6;
+  border-radius: $radius-md;
+  border: none;
+  background: $color-primary;
+  color: $color-surface;
+  font-size: $font-size-base;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background $transition-fast, opacity $transition-fast;
+
+  &:hover:not(:disabled) { background: $color-primary-hover; }
+
+  &:disabled {
+    background: $color-sold-out;
+    cursor: not-allowed;
+  }
+
+  &.loading { opacity: 0.7; }
+  &.success { background: $color-success; }
+  &.error { background: $color-error; }
+}
+
+.delivery {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  svg { flex-shrink: 0; }
+}

@@ -1,0 +1,97 @@
+@use '../styles/variables' as *;
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-10 $space-6;
+
+  @media (max-width: $bp-mobile) {
+    padding: $space-6 $space-4;
+  }
+}
+
+.heading {
+  font-size: $font-size-2xl;
+  font-weight: 700;
+  margin-bottom: $space-8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+}
+
+@mixin shimmer {
+  background: linear-gradient(90deg, $color-border 25%, #f0f0ee 50%, $color-border 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: $radius-md;
+  will-change: background-position;
+}
+
+.skeletonCard {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  background: $color-surface;
+}
+
+.skeletonImg {
+  aspect-ratio: 1 / 1;
+  @include shimmer;
+  border-radius: 0;
+}
+
+// mirrors .body: padding $space-4, gap $space-1, + .footer margin-top $space-3
+.skeletonBody {
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.skeletonLine {
+  border-radius: $radius-sm;
+  @include shimmer;
+}
+
+.skeletonCategory { height: 13px; width: 42%; }
+.skeletonTitle1   { height: 16px; width: 92%; margin-top: $space-1; }
+.skeletonTitle2   { height: 16px; width: 65%; }
+.skeletonPrice    { height: 20px; width: 28%; margin-top: $space-3; }
+
+@keyframes shimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.error {
+  text-align: center;
+  padding: $space-16;
+  color: $color-text-muted;
+
+  h2 { color: $color-error; font-size: $font-size-xl; margin-bottom: $space-2; }
+
+  button {
+    margin-top: $space-4;
+    padding: $space-3 $space-6;
+    border-radius: $radius-md;
+    border: 1.5px solid $color-border;
+    background: $color-surface;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background $transition-fast;
+    &:hover { background: $color-bg; }
+  }
+}

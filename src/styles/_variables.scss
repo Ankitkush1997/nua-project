@@ -1,0 +1,49 @@
+// Colours
+$color-bg: #fafaf8;
+$color-surface: #ffffff;
+$color-border: #e5e5e0;
+$color-text: #1a1a1a;
+$color-text-muted: #6b7280;
+$color-text-light: #9ca3af;
+$color-primary: #1a1a1a;
+$color-primary-hover: #333333;
+$color-sale: #c2410c;
+$color-low-stock: #92400e;
+$color-sold-out: #d1d5db;
+$color-success: #15803d;
+$color-error: #dc2626;
+
+// Typography
+$font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+// Breakpoints
+$bp-mobile: 767px;
+
+// Borders & Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;

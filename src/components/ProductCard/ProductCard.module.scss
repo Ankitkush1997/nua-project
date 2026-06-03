@@ -1,0 +1,86 @@
+@use '../../styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $color-surface;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow $transition-base, transform $transition-base;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+    transform: translateY(-2px);
+  }
+}
+
+.imgWrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: $color-bg;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: $space-4;
+    transition: transform $transition-base;
+  }
+
+  .card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.body {
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  flex: 1;
+}
+
+.category {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+  font-weight: 600;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: 600;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $space-3;
+}
+
+.price {
+  font-size: $font-size-lg;
+  font-weight: 700;
+}
+
+.rating {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  white-space: nowrap;
+
+  span { color: #f59e0b; }
+}

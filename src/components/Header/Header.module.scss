@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-4 $space-6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $bp-mobile) {
+    padding: $space-3 $space-4;
+  }
+}
+
+.logo {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.cartBtn {
+  position: relative;
+  background: none;
+  border: none;
+  padding: $space-2;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover { background: $color-bg; }
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  background: $color-sale;
+  color: $color-surface;
+  border-radius: $radius-full;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}

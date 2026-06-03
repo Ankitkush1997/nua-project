@@ -1,0 +1,177 @@
+@use '../styles/variables' as *;
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-10 $space-6;
+
+  @media (max-width: $bp-mobile) {
+    padding: $space-6 $space-4;
+  }
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-text-muted;
+  margin-bottom: $space-6;
+  transition: color $transition-fast;
+
+  &:hover { color: $color-text; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+@mixin shimmer {
+  background: linear-gradient(90deg, $color-border 25%, #f0f0ee 50%, $color-border 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: $radius-md;
+  will-change: background-position;
+}
+
+.skeleton {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+.skeletonLeft {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.skeletonImg {
+  aspect-ratio: 1 / 1;
+  max-height: 60vh;
+  border-radius: $radius-lg;
+  @include shimmer;
+}
+
+.skeletonThumbs {
+  display: flex;
+  gap: $space-2;
+}
+
+.skeletonThumb {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  @include shimmer;
+}
+
+// Right panel mirrors ProductInfo exactly:
+// panel gap = $space-6, each section has a label (12px) + mb $space-3 + content
+.skeletonRight {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6; // matches .panel gap
+  padding-top: $space-2;
+}
+
+.skeletonBlock {
+  @include shimmer;
+}
+
+// Section 1: brand (line-height ~1.6 × 14px ≈ 22px) + title (2xl ~30px × 1.25 × 2 lines) + price row
+.skeletonHeading {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  .skeletonBrand   { height: 14px; width: 36%; @include shimmer; }
+  .skeletonTitle1  { height: 22px; width: 100%; @include shimmer; margin-top: $space-1; }
+  .skeletonTitle2  { height: 22px; width: 70%; @include shimmer; }
+  .skeletonPrice   { height: 28px; width: 32%; @include shimmer; margin-top: $space-2; }
+}
+
+// Section 2: colour — label + swatches + colour name
+.skeletonColour {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  .skeletonLabel   { height: 12px; width: 28%; @include shimmer; margin-bottom: $space-3; }
+  .skeletonSwatches {
+    display: flex;
+    gap: $space-2;
+  }
+  .skeletonSwatch  { width: 32px; height: 32px; border-radius: $radius-full; @include shimmer; }
+  .skeletonColourName { height: 12px; width: 24%; @include shimmer; margin-top: $space-2; }
+}
+
+// Section 3: size — label + buttons
+.skeletonSizeSection {
+  display: flex;
+  flex-direction: column;
+
+  .skeletonLabel  { height: 12px; width: 18%; @include shimmer; margin-bottom: $space-3; }
+  .skeletonSizes  { display: flex; gap: $space-2; flex-wrap: wrap; }
+  .skeletonSize   { width: 52px; height: 36px; @include shimmer; }
+}
+
+// Section 4: quantity — label + control (120px wide × 40px tall)
+.skeletonQty {
+  display: flex;
+  flex-direction: column;
+
+  .skeletonLabel  { height: 12px; width: 24%; @include shimmer; margin-bottom: $space-3; }
+  .skeletonQtyBox { width: 120px; height: 40px; @include shimmer; }
+}
+
+// Section 5: CTA button (padding $space-4 top+bottom = 32px + font 16px = ~52px)
+.skeletonBtn {
+  height: 52px;
+  width: 100%;
+  @include shimmer;
+}
+
+@keyframes shimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.error {
+  text-align: center;
+  padding: $space-16;
+  color: $color-text-muted;
+
+  h2 {
+    font-size: $font-size-xl;
+    margin-bottom: $space-2;
+    color: $color-error;
+  }
+
+  button {
+    margin-top: $space-4;
+    padding: $space-3 $space-6;
+    border-radius: $radius-md;
+    border: 1.5px solid $color-border;
+    background: $color-surface;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    transition: background $transition-fast;
+
+    &:hover { background: $color-bg; }
+  }
+}

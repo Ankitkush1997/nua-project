@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.mainWrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: $color-surface;
+  aspect-ratio: 1 / 1;
+  max-height: 60vh;
+
+  @media (max-width: $bp-mobile) {
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+  cursor: zoom-in;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%);
+  transition: transform $transition-base;
+
+  .mainWrap.zoomed & {
+    transform: scale(1.75);
+    cursor: zoom-out;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: $space-2;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: $space-1;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color $transition-fast;
+  cursor: pointer;
+  background: $color-surface;
+
+  &.active {
+    border-color: $color-primary;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dots {
+  display: none;
+  justify-content: center;
+  gap: $space-2;
+  margin-top: $space-1;
+
+  @media (max-width: $bp-mobile) {
+    display: flex;
+  }
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: $color-border;
+  border: none;
+  padding: 0;
+  transition:
+    background $transition-fast,
+    width $transition-fast;
+  cursor: pointer;
+
+  &.active {
+    background: $color-primary;
+    width: 18px;
+  }
+}
