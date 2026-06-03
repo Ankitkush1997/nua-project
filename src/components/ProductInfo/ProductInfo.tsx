@@ -34,7 +34,7 @@ export default function ProductInfo({ product }: Props) {
     });
   }
 
-  const originalPrice = product.price * 1.35; // Simulate 35% discount
+  const originalPrice = product.price * 1.35;
 
   const btnLabel =
     status === 'loading'

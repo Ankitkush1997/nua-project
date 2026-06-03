@@ -20,7 +20,9 @@
   margin-bottom: $space-6;
   transition: color $transition-fast;
 
-  &:hover { color: $color-text; }
+  &:hover {
+    color: $color-text;
+  }
 }
 
 .grid {
@@ -80,12 +82,10 @@
   @include shimmer;
 }
 
-// Right panel mirrors ProductInfo exactly:
-// panel gap = $space-6, each section has a label (12px) + mb $space-3 + content
 .skeletonRight {
   display: flex;
   flex-direction: column;
-  gap: $space-6; // matches .panel gap
+  gap: $space-6;
   padding-top: $space-2;
 }
 
@@ -93,53 +93,103 @@
   @include shimmer;
 }
 
-// Section 1: brand (line-height ~1.6 × 14px ≈ 22px) + title (2xl ~30px × 1.25 × 2 lines) + price row
 .skeletonHeading {
   display: flex;
   flex-direction: column;
   gap: $space-2;
 
-  .skeletonBrand   { height: 14px; width: 36%; @include shimmer; }
-  .skeletonTitle1  { height: 22px; width: 100%; @include shimmer; margin-top: $space-1; }
-  .skeletonTitle2  { height: 22px; width: 70%; @include shimmer; }
-  .skeletonPrice   { height: 28px; width: 32%; @include shimmer; margin-top: $space-2; }
+  .skeletonBrand {
+    height: 14px;
+    width: 36%;
+    @include shimmer;
+  }
+  .skeletonTitle1 {
+    height: 22px;
+    width: 100%;
+    @include shimmer;
+    margin-top: $space-1;
+  }
+  .skeletonTitle2 {
+    height: 22px;
+    width: 70%;
+    @include shimmer;
+  }
+  .skeletonPrice {
+    height: 28px;
+    width: 32%;
+    @include shimmer;
+    margin-top: $space-2;
+  }
 }
 
-// Section 2: colour — label + swatches + colour name
 .skeletonColour {
   display: flex;
   flex-direction: column;
   gap: 0;
 
-  .skeletonLabel   { height: 12px; width: 28%; @include shimmer; margin-bottom: $space-3; }
+  .skeletonLabel {
+    height: 12px;
+    width: 28%;
+    @include shimmer;
+    margin-bottom: $space-3;
+  }
   .skeletonSwatches {
     display: flex;
     gap: $space-2;
   }
-  .skeletonSwatch  { width: 32px; height: 32px; border-radius: $radius-full; @include shimmer; }
-  .skeletonColourName { height: 12px; width: 24%; @include shimmer; margin-top: $space-2; }
+  .skeletonSwatch {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    @include shimmer;
+  }
+  .skeletonColourName {
+    height: 12px;
+    width: 24%;
+    @include shimmer;
+    margin-top: $space-2;
+  }
 }
 
-// Section 3: size — label + buttons
 .skeletonSizeSection {
   display: flex;
   flex-direction: column;
 
-  .skeletonLabel  { height: 12px; width: 18%; @include shimmer; margin-bottom: $space-3; }
-  .skeletonSizes  { display: flex; gap: $space-2; flex-wrap: wrap; }
-  .skeletonSize   { width: 52px; height: 36px; @include shimmer; }
+  .skeletonLabel {
+    height: 12px;
+    width: 18%;
+    @include shimmer;
+    margin-bottom: $space-3;
+  }
+  .skeletonSizes {
+    display: flex;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+  .skeletonSize {
+    width: 52px;
+    height: 36px;
+    @include shimmer;
+  }
 }
 
-// Section 4: quantity — label + control (120px wide × 40px tall)
 .skeletonQty {
   display: flex;
   flex-direction: column;
 
-  .skeletonLabel  { height: 12px; width: 24%; @include shimmer; margin-bottom: $space-3; }
-  .skeletonQtyBox { width: 120px; height: 40px; @include shimmer; }
+  .skeletonLabel {
+    height: 12px;
+    width: 24%;
+    @include shimmer;
+    margin-bottom: $space-3;
+  }
+  .skeletonQtyBox {
+    width: 120px;
+    height: 40px;
+    @include shimmer;
+  }
 }
 
-// Section 5: CTA button (padding $space-4 top+bottom = 32px + font 16px = ~52px)
 .skeletonBtn {
   height: 52px;
   width: 100%;
@@ -147,8 +197,12 @@
 }
 
 @keyframes shimmer {
-  0%   { background-position:  200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .error {
@@ -172,6 +226,8 @@
     font-weight: 500;
     transition: background $transition-fast;
 
-    &:hover { background: $color-bg; }
+    &:hover {
+      background: $color-bg;
+    }
   }
 }

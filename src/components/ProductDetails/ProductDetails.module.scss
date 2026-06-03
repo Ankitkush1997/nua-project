@@ -52,12 +52,13 @@
   line-height: 1.7;
 }
 
-// Specs table
 .specsTable {
   width: 100%;
   border-collapse: collapse;
 
-  tr:nth-child(odd) td { background: $color-bg; }
+  tr:nth-child(odd) td {
+    background: $color-bg;
+  }
 
   td {
     padding: $space-2 $space-3;
@@ -71,7 +72,6 @@
   }
 }
 
-// Reviews
 .reviews {
   display: flex;
   flex-direction: column;

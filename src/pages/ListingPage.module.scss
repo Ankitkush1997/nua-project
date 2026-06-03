@@ -52,7 +52,6 @@
   border-radius: 0;
 }
 
-// mirrors .body: padding $space-4, gap $space-1, + .footer margin-top $space-3
 .skeletonBody {
   padding: $space-5;
   display: flex;
@@ -65,14 +64,32 @@
   @include shimmer;
 }
 
-.skeletonCategory { height: 13px; width: 42%; }
-.skeletonTitle1   { height: 16px; width: 92%; margin-top: $space-1; }
-.skeletonTitle2   { height: 16px; width: 65%; }
-.skeletonPrice    { height: 20px; width: 28%; margin-top: $space-3; }
+.skeletonCategory {
+  height: 13px;
+  width: 42%;
+}
+.skeletonTitle1 {
+  height: 16px;
+  width: 92%;
+  margin-top: $space-1;
+}
+.skeletonTitle2 {
+  height: 16px;
+  width: 65%;
+}
+.skeletonPrice {
+  height: 20px;
+  width: 28%;
+  margin-top: $space-3;
+}
 
 @keyframes shimmer {
-  0%   { background-position:  200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .error {
@@ -80,7 +97,11 @@
   padding: $space-16;
   color: $color-text-muted;
 
-  h2 { color: $color-error; font-size: $font-size-xl; margin-bottom: $space-2; }
+  h2 {
+    color: $color-error;
+    font-size: $font-size-xl;
+    margin-bottom: $space-2;
+  }
 
   button {
     margin-top: $space-4;
@@ -92,6 +113,8 @@
     font-weight: 500;
     cursor: pointer;
     transition: background $transition-fast;
-    &:hover { background: $color-bg; }
+    &:hover {
+      background: $color-bg;
+    }
   }
 }

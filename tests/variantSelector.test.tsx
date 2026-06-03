@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { CartProvider } from '../src/stores/CartContext';
 import ProductInfo from '../src/components/ProductInfo/ProductInfo';
+import { CartProvider } from '../src/stores/CartContext';
 import type { FakeStoreProduct } from '../src/types';
 
 const mockProduct: FakeStoreProduct = {
@@ -20,7 +20,7 @@ function renderProductInfo(search = '') {
       <CartProvider>
         <ProductInfo product={mockProduct} />
       </CartProvider>
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 }
 
@@ -40,32 +40,29 @@ describe('ProductInfo — variant selector', () => {
 
   it('disables CTA and shows "Sold Out" for sold-out size', () => {
     renderProductInfo();
-    // XL is sold_out in productData
     const xlBtn = screen.getByRole('button', { name: /size xl/i });
     expect(xlBtn).toBeDisabled();
   });
 
   it('shows low stock label when low-stock size is selected', () => {
     renderProductInfo();
-    // M is low stock (quantity: 2)
     fireEvent.click(screen.getByRole('button', { name: /size m/i }));
     expect(screen.getByText(/only 2 left/i)).toBeInTheDocument();
   });
 
   it('caps quantity at available stock for low-stock size', () => {
     renderProductInfo();
-    // M has quantity: 2
     fireEvent.click(screen.getByRole('button', { name: /size m/i }));
     const increase = screen.getByLabelText(/increase quantity/i);
-    fireEvent.click(increase); // qty → 2
-    expect(increase).toBeDisabled(); // capped at 2
+    fireEvent.click(increase);
+    expect(increase).toBeDisabled();
   });
 
   it('resets quantity to 1 when switching sizes', () => {
     renderProductInfo();
     fireEvent.click(screen.getByRole('button', { name: /size s/i }));
     const increase = screen.getByLabelText(/increase quantity/i);
-    fireEvent.click(increase); // qty → 2
+    fireEvent.click(increase);
     fireEvent.click(screen.getByRole('button', { name: /size l/i }));
     expect(screen.getByText('1')).toBeInTheDocument();
   });

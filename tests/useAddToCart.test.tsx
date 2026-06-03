@@ -1,9 +1,17 @@
-import { renderHook, act } from '@testing-library/react';
-import { CartProvider } from '../src/stores/CartContext';
+import { act, renderHook } from '@testing-library/react';
 import { useAddToCart } from '../src/hooks/useAddToCart';
+import { CartProvider } from '../src/stores/CartContext';
 import type { CartItem } from '../src/types';
 
-const item: CartItem = { productId: 1, title: 'Jacket', image: '', price: 55, colour: 'Forest Green', size: 'M', quantity: 1 };
+const item: CartItem = {
+  productId: 1,
+  title: 'Jacket',
+  image: '',
+  price: 55,
+  colour: 'Forest Green',
+  size: 'M',
+  quantity: 1,
+};
 
 describe('useAddToCart', () => {
   it('starts with idle status', () => {
@@ -12,27 +20,32 @@ describe('useAddToCart', () => {
   });
 
   it('transitions to loading then success or error', async () => {
-    // Force success by mocking Math.random to always return > 0.2
     vi.spyOn(Math, 'random').mockReturnValue(0.9);
 
     const { result } = renderHook(() => useAddToCart(), { wrapper: CartProvider });
 
     let promise: Promise<void>;
-    act(() => { promise = result.current.addToCart(item); });
+    act(() => {
+      promise = result.current.addToCart(item);
+    });
 
     expect(result.current.status).toBe('loading');
-    await act(async () => { await promise; });
+    await act(async () => {
+      await promise;
+    });
     expect(result.current.status).toBe('success');
 
     vi.restoreAllMocks();
   });
 
   it('sets error status on simulated failure', async () => {
-    vi.spyOn(Math, 'random').mockReturnValue(0.1); // < 0.2 → failure
+    vi.spyOn(Math, 'random').mockReturnValue(0.1);
 
     const { result } = renderHook(() => useAddToCart(), { wrapper: CartProvider });
 
-    await act(async () => { await result.current.addToCart(item); });
+    await act(async () => {
+      await result.current.addToCart(item);
+    });
     expect(result.current.status).toBe('error');
 
     vi.restoreAllMocks();
